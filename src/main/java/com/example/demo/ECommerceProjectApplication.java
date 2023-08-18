@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //@ComponentScan(basePackages = "sevrice")
 
 @EnableJpaRepositories("repository")
-@ComponentScan(basePackages = {"controller", "sevrice"})
+@ComponentScan(basePackages = {"controller", "sevrice", "dto"})
 @EntityScan(basePackages = {"model"})
 
 public class ECommerceProjectApplication {
