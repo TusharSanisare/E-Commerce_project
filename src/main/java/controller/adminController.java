@@ -1,7 +1,11 @@
 package controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +19,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import dto.ProductDTO;
 import model.Category;
+import model.Product;
 import sevrice.ProductService;
 import sevrice.categoryService;
 
 @Controller
 public class adminController {
+	
+	public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/productImages";
 	
 	@Autowired
 	categoryService cs;
@@ -84,7 +91,26 @@ public class adminController {
 	
 	@PostMapping("/admin/products/add")
 	public String productAddPost(@ModelAttribute("productDTO")ProductDTO productDTO, @RequestParam("productImage")MultipartFile file, @RequestParam("imgName")String imgName) throws IOException{
-		return "productsAdd";
+		Product p = new Product();
+		p.setId(productDTO.getId());
+		p.setName(productDTO.getName());
+		p.setCategory(cs.getCategoryById(productDTO.getCategoryId()).get());
+		p.setPrice(productDTO.getPrice());
+		p.setWeight(productDTO.getWeight());
+		p.setDescription(productDTO.getDescription());
+		
+		String imageUUID;
+		if(!file.isEmpty()) {
+			imageUUID = file.getOriginalFilename();
+			Path fileNameAndPath = Paths.get(uploadDir, imageUUID);
+			Files.write(fileNameAndPath, file.getBytes());
+		}else {
+			imageUUID = imgName;
+		}
+		p.setImageName(imageUUID);
+		ps.addProduct(p);
+		
+		return "redirect:/admin/products";
 	}
 	
 	

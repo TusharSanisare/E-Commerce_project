@@ -12,7 +12,7 @@ public class ProductDTO {
 
 	private Long id;
 	private String name;
-	private Category categoryId;
+	private int categoryId;
 	private double price;
 	private double weight;
 	private String description;
@@ -26,7 +26,7 @@ public class ProductDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ProductDTO(Long id, String name, Category categoryId, double price, double weight, String description,
+	public ProductDTO(Long id, String name, int categoryId, double price, double weight, String description,
 			String imageName) {
 		super();
 		this.id = id;
@@ -49,10 +49,10 @@ public class ProductDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Category getCategoryId() {
+	public int getCategoryId() {
 		return categoryId;
 	}
-	public void setCategoryId(Category categoryId) {
+	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
 	public double getPrice() {

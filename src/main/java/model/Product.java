@@ -29,7 +29,7 @@ public class Product {
 	
 	private String description;
 	
-	private String image;
+	private String imageName;
 	
 	
 	
@@ -41,7 +41,7 @@ public class Product {
 	}
 
 	public Product(Long id, String name, Category category, double price, double weight, String description,
-			String image) {
+			String imageName) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -49,7 +49,7 @@ public class Product {
 		this.price = price;
 		this.weight = weight;
 		this.description = description;
-		this.image = image;
+		this.imageName = imageName;
 	}
 
 	public Long getId() {
@@ -100,12 +100,12 @@ public class Product {
 		this.description = description;
 	}
 
-	public String getImage() {
-		return image;
+	public String getImageName() {
+		return imageName;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 	
 	

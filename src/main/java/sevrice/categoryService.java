@@ -30,6 +30,10 @@ public class categoryService {
 		cr.deleteById(id);
 	}
 	
+//	public Optional<Category> getCategoryById(Category category) {
+//		return cr.findAllById(category.getId());
+//	}
+	
 	public Optional<Category> getCategoryById(int id) {
 		return cr.findById(id);
 	}
