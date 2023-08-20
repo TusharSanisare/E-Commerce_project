@@ -28,6 +28,6 @@ public class ProductService {
 		return pr.getProductById(id);
 	}
 	public List<Product> getAllProductByCategoryId(int id){
-		return pr.findAllByCategory(id);
+		return pr.findAllByCategory_Id(id);
 	}
 }
