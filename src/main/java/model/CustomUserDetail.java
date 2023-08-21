@@ -31,7 +31,7 @@ public class CustomUserDetail extends User implements UserDetails{
 		super.getRoles().forEach(role->{
 			authorityList.add(new SimpleGrantedAuthority(role.getName()));
 		});
-		return null;
+		return authorityList;
 	}
 
 	@Override
